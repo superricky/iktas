@@ -1,0 +1,22 @@
+<%= form_for @admin_photo, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :sign, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.radio_button :sign, :class => 'radio_button' %><strong>true</strong>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <%= f.radio_button :sign, :class => 'radio_button' %><strong>flase<strong>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :avatar, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :avatar,:class => 'file_field'%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_photos_path, :class => 'btn' %>
+  </div>
+<% end %>
