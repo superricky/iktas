@@ -1,6 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   layout 'admin'
-  before_action :set_admin_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_article, only: [:show, :edit, :update, :destroy,:changesign]
 
 
   # GET /admin/articles
@@ -63,6 +63,24 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
+  def changesign
+    if @admin_article.sign
+       @admin_article.sign=false
+    else
+       @admin_article.sign=true
+    end
+    respond_to do |format|
+      @rows=Admin::Article.count(:conditions=>"sign='true'")
+      if @rows<=3
+          @admin_article.save      
+          format.html { redirect_to admin_articles_url }
+          format.json { head :no_content }
+      else
+          format.html { redirect_to admin_articles_url,notice: 'Article was successfully updated.' }
+          format.json { head :no_content }
+      end
+    end 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_article
@@ -71,6 +89,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_article_params
-      params.require(:admin_article).permit(:title, :content)
+      params.require(:admin_article).permit(:title, :content,:sign)
     end
 end

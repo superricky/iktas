@@ -1,11 +1,11 @@
 class Admin::PhotosController < ApplicationController
   layout 'admin'
-  before_action :set_admin_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_photo, only: [:show, :edit, :update, :destroy,:changesign]
 
   # GET /admin/photos
   # GET /admin/photos.json
   def index
-    @admin_photos = Admin::Photo.all
+    @admin_photos = Admin::Photo.all.page(params[:page]).per(4)
   end
 
   # GET /admin/photos/1
@@ -61,7 +61,19 @@ class Admin::PhotosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def changesign
+    if @admin_photo.sign
+      @admin_photo.sign=false
+    else
+      @admin_photo.sign=true
+    end
 
+    respond_to do |format|
+      @admin_photo.save      
+      format.html { redirect_to admin_photos_url }
+      format.json { head :no_content }
+    end 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_photo

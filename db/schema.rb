@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212132432) do
+ActiveRecord::Schema.define(version: 20140213084343) do
 
   create_table "admin_articles", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sing"
+    t.boolean  "sign",       default: false
   end
 
   create_table "admin_images", force: true do |t|
@@ -34,6 +36,16 @@ ActiveRecord::Schema.define(version: 20140212132432) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "kindeditor_assets", force: true do |t|
+    t.string   "asset"
+    t.integer  "file_size"
+    t.string   "file_type"
+    t.integer  "owner_id"
+    t.string   "asset_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

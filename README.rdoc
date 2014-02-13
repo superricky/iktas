@@ -1,28 +1,31 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+后台路径：admin/home
 
-* Ruby version
+暂时没有写权限。没有用登陆
 
-* System dependencies
+图片可以替换。但是替换的数量还没有限定。   
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+文章可以添加。
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+问题：1。使用了twitter-bootstrap-rails，一旦加入前台界面后，一部分界面失效。
+      2。lifecontroller中的show对应的show.html.erb页面。没有应用到application。html。erb。
+
+
+
+添加文章的流程：输入http://localhost:3000/admin/home
+                  点击articles
+                  点击new article 
+                  输入标题。
+                  上传图片
+                  输入内容。
+                  可以在show中查看。「
+
+添加前台图片的流程：输入http://localhost:3000/admin/home
+                  点击images
+                  点击newimages
+                  然后两个单选按钮是用来控制前台显示的。
+                  上传文件
+                  更改前台显示属性，点击edit进行更改。

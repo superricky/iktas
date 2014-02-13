@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>IKTAS</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/apple-touch-icon-72x72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/apple-touch-icon-114x114-precomposed.png" />
+    <!--[if lt IE 9]>
+        <script src="js/css3-mediaqueries.min.js"></script>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/home-mq.css" rel="stylesheet" />
+</head>
+<body>
+    <header id="hd">
+        <div class="w">
+            <div class="share">
+                <a href="#" class="li">Linkedin</a>
+                <a href="#" class="tw">Twitter</a>
+                <a href="#" class="wb">Weibo</a>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="cur"><%=link_to "HOME",root_path%></li>
+                    <li><%=link_to "LIFE",life_index_path%></li>
+                    <li><a href="#">PACKAGE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="#">SHOP</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                </ul>
+            </nav>
+            <h1 class="logo"><a href="/">IKTAS</a></h1>
+        </div>
+        <div class="m">MENU</div>
+    </header>
+    <div id="bd">
+        <div class="gallery">
+            <div class="gallery-new"><img src="assets/gallery-new.png" /></div>
+            <div id="gallerys">
+                <% @admin_photos.each do |admin_photo| %>
+                    <%= image_tag admin_photo.avatar.url%>
+                    <a href="#" class="slidesjs-previous slidesjs-navigation">上一页</a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation">下一页</a>
+                <% end %>
+            </div>
+            <div class="gallery-bg"><img src="assets/gallery-bg.png" /></div>
+        </div>
+        <div class="m1">
+            <ul>
+                <li>
+                    <div class="m1-img m1-img1"></div>
+                    <div class="m1-txt m1-txt1">
+                        <h3>Package</h3>
+                        <p>IKTAS exquisite packaging Follow its own style Environmentally materials. More Classic Gift Set.</p>
+                        <div><a href="#">Package</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="m1-img m1-img2"></div>
+                    <div class="m1-txt m1-txt2">
+                        <h3>Online Shop</h3>
+                        <p>IKTAS online shop Product variety Detailed description All imported products.</p>
+                        <div><a href="#">Online Shop</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="m1-img m1-img3"></div>
+                    <div class="m1-txt m1-txt3">
+                        <h3>Contact</h3>
+                        <p>Contact us, IKTAS will provide you with more services.</p>
+                        <div><a href="#">Contact</a></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="m2">
+            <ul>
+                <% @admin_articles.each do |admin_article| %>
+                <li>
+                    <div class="m2-img"><a href="#"><img src="assets/pr-img.png" alt="" /></a></div>
+                    <div class="m2-txt">
+                        <h3><%=link_to admin_article.title,article_path(admin_article)%></h3>
+                        <p>Exquisite craftsmanship, we just want to do something truly unique Try to mack a diffrient.</p>
+                        <div><%=link_to "Read",article_path(admin_article)%>&gt;&gt;</div>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="m3">
+            <img src="assets/qrcode.jpg" alt="" />
+            <p>Join our wechat and we will send you the newest information about us</p>
+        </div>
+    </div>
+    <footer id="ft"></footer>
+<script src="assets/js/jquery-1.9.1.min.js"></script>
+<script src="assets/js/jquery.slides.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

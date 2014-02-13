@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 1.2'
 
 #更好的界面
 gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "less-rails" 
 gem "twitter-bootstrap-rails"
 
 #富文本
@@ -21,8 +21,8 @@ gem 'kaminari'
 
 #上传
 gem "paperclip"
-gem 'rmagick', '2.13.2'
 #
 
 group :doc do
   gem 'sdoc', require: false
+end
